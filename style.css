@@ -1,0 +1,237 @@
+/* 1. Cores Pastéis e Fontes */
+:root {
+    --cor-fundo: #f8f8ff; /* Lavender Blush (fundo principal) */
+    --cor-primaria: #b0e0e6; /* Powder Blue (detalhes) */
+    --cor-secundaria: #d8bfd8; /* Thistle (destaques) */
+    --cor-texto: #363f5f; /* Azul escuro para leitura */
+    --fonte-elegante: 'Georgia', serif;
+    --cor-verde: #49aa26;
+    --cor-vermelho: #e92929;
+}
+
+body {
+    font-family: var(--fonte-elegante);
+    background-color: var(--cor-fundo);
+    background-image: url('fundo.jpeg'); /* A imagem deve se chamar 'fundo.jpg' e estar nesta pasta */
+    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* O fundo fica fixo ao rolar a página */
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: var(--cor-primaria);
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--cor-secundaria);
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* Filtros */
+#filters {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+#monthSelect {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    color: var(--cor-texto);
+}
+
+#dateFilter {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    color: var(--cor-texto);
+    margin-left: 10px;
+}
+
+/* Cartões de Saldo */
+#balance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    color: var(--cor-texto);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+.card.total {
+    background: var(--cor-secundaria);
+    color: white;
+}
+
+/* Tabela de Transações */
+#data-table {
+    width: 100%;
+    border-spacing: 0 0.5rem;
+    color: #969cb3;
+}
+
+table th {
+    background: white;
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+table td {
+    background: white;
+    padding: 1rem 2rem;
+}
+
+td.description {
+    color: var(--cor-texto);
+}
+
+td.income {
+    color: var(--cor-verde);
+}
+
+td.expense {
+    color: var(--cor-vermelho);
+}
+
+td img {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: .8rem;
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #f0f2f5;
+    padding: 2.4rem;
+    position: relative;
+    z-index: 1;
+    border-radius: 0.25rem;
+}
+
+/* Form */
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+    color: var(--cor-texto);
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group .help {
+    opacity: 0.4;
+    color: var(--cor-texto);
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: white;
+    background: var(--cor-verde);
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #3dd705;
+}
+
+.button.cancel {
+    color: var(--cor-vermelho);
+    border: 2px solid var(--cor-vermelho);
+    border-radius: 0.25rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    box-sizing: border-box;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
