@@ -1,6 +1,6 @@
 /* 1. Cores Pastéis e Fontes */
 :root {
-    --cor-fundo: #f8f8ff; /* Lavender Blush (fundo principal) */
+    --cor-fundo: #3b3b86; /* Lavender Blush (fundo principal) */
     --cor-primaria: #333d75; /* Powder Blue (detalhes) */
     --cor-secundaria: #5153a8; /* Thistle (destaques) */
     --cor-texto: #3d81bd; /* Cinza para leitura */
@@ -30,7 +30,7 @@ header {
 }
 
 h1 {
-    color: var(--cor-secundaria);
+    color: var(--cor-texto);
     font-size: 2.5em;
     font-weight: 300;
 }
