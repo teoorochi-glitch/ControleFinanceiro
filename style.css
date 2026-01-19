@@ -3,7 +3,7 @@
     --cor-fundo: #f8f8ff; /* Lavender Blush (fundo principal) */
     --cor-primaria: #333d75; /* Powder Blue (detalhes) */
     --cor-secundaria: #5153a8; /* Thistle (destaques) */
-    --cor-texto: #4b65f6; /* Azul escuro para leitura */
+    --cor-texto: #3d81bd; /* Cinza para leitura */
     --fonte-elegante: 'Georgia', serif;
     --cor-verde: #49aa26;
     --cor-vermelho: #e92929;
@@ -118,7 +118,7 @@ table td {
 }
 
 td.description {
-    color: var(--cor-texto);
+    color: var(--cor-fundo);
 }
 
 td.income {
@@ -137,7 +137,7 @@ td img {
 .button.new {
     display: inline-block;
     margin-bottom: .8rem;
-    color: var(--cor-secundaria);
+    color: var(--cor-fundo);
     text-decoration: none;
     font-weight: bold;
 }
