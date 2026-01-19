@@ -1,11 +1,15 @@
-const transactions = [
-    { id: 1, description: 'Luz', amount: -50000, date: '23/01/2026' },
-    { id: 2, description: 'Criação Website', amount: 500000, date: '23/01/2026' },
-    { id: 3, description: 'Internet', amount: -20000, date: '23/01/2026' },
-];
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
+    },
+
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions));
+    }
+}
 
 const Transaction = {
-    all: transactions,
+    all: Storage.get(),
 
     filtered() {
         const dateFilter = document.getElementById('dateFilter').value;
@@ -31,6 +35,7 @@ const Transaction = {
         // Gera um ID simples baseado no tempo atual para poder excluir depois
         transaction.id = Date.now();
         Transaction.all.push(transaction);
+        Storage.set(Transaction.all);
         App.reload();
     },
 
@@ -56,6 +61,7 @@ const Transaction = {
 
     remove(id) {
         Transaction.all = Transaction.all.filter(transaction => transaction.id !== id);
+        Storage.set(Transaction.all);
         App.reload();
     }
 }
@@ -154,6 +160,7 @@ const Utils = {
 
 const App = {
     init() {
+        Transaction.all = Storage.get();
         DOM.populateMonthSelect();
         Transaction.filtered().forEach(DOM.addTransaction);
         DOM.updateBalance();

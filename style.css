@@ -2,8 +2,8 @@
 :root {
     --cor-fundo: #f8f8ff; /* Lavender Blush (fundo principal) */
     --cor-primaria: #b0e0e6; /* Powder Blue (detalhes) */
-    --cor-secundaria: #d8bfd8; /* Thistle (destaques) */
-    --cor-texto: #363f5f; /* Azul escuro para leitura */
+    --cor-secundaria: #5153a8; /* Thistle (destaques) */
+    --cor-texto: #333d75; /* Azul escuro para leitura */
     --fonte-elegante: 'Georgia', serif;
     --cor-verde: #49aa26;
     --cor-vermelho: #e92929;
@@ -16,7 +16,7 @@ body {
     background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed; /* O fundo fica fixo ao rolar a página */
-    color: var(--cor-texto);
+    color: var(--cor-verde);
     margin: 0;
     padding: 0;
     text-align: center;
@@ -25,7 +25,7 @@ body {
 header {
     background-color: var(--cor-primaria);
     padding: 40px 20px;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
 }
 
 h1 {
@@ -46,19 +46,22 @@ h1 {
 }
 
 #monthSelect {
-    padding: 0.5rem;
+    padding: 0.8rem;
     border-radius: 0.25rem;
     border: 1px solid #ccc;
     color: var(--cor-texto);
 }
 
 #dateFilter {
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ccc;
+    border: 10 solid #ccc;
     color: var(--cor-texto);
-    margin-left: 10px;
+    margin-left: 5px;
+    width: auto;
 }
+
+/* Cartões de Saldo */
+
+
 
 /* Cartões de Saldo */
 #balance {
@@ -176,7 +179,7 @@ td img {
     color: var(--cor-texto);
 }
 
-input {
+input[type="date"] {
     border: none;
     border-radius: 0.2rem;
     padding: 0.8rem;
