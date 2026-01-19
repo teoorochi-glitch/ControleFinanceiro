@@ -1,10 +1,22 @@
 const Storage = {
+    getActiveUser() {
+        return localStorage.getItem("dev.finances:activeUser");
+    },
+
+    setActiveUser(user) {
+        localStorage.setItem("dev.finances:activeUser", user);
+    },
+
     get() {
-        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
+        const user = Storage.getActiveUser();
+        if (!user) return [];
+        return JSON.parse(localStorage.getItem(`dev.finances:${user}:transactions`)) || [];
     },
 
     set(transactions) {
-        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions));
+        const user = Storage.getActiveUser();
+        if (!user) return;
+        localStorage.setItem(`dev.finances:${user}:transactions`, JSON.stringify(transactions));
     }
 }
 
@@ -81,9 +93,9 @@ const DOM = {
         const time = transaction.time ? ` - ${transaction.time}` : '';
 
         const html = `
-            <td class="description">${transaction.description}</td>
-            <td class="${CSSclass}">${amount}</td>
-            <td class="date">${transaction.date}${time}</td>
+            <td class="description" data-label="Descrição">${transaction.description}</td>
+            <td class="${CSSclass}" data-label="Valor">${amount}</td>
+            <td class="date" data-label="Data">${transaction.date}${time}</td>
             <td>
                 <img onclick="Transaction.remove(${transaction.id})" src="https://img.icons8.com/material-outlined/24/e92929/trash--v1.png" alt="Remover transação">
             </td>
@@ -171,7 +183,45 @@ const App = {
     }
 }
 
-App.init();
+// Controle de Login
+const Login = {
+    init() {
+        const activeUser = Storage.getActiveUser();
+        if (activeUser) {
+            Login.showApp();
+        } else {
+            Login.showLogin();
+        }
+    },
+
+    submit(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        if (username) {
+            Storage.setActiveUser(username);
+            Login.showApp();
+        }
+    },
+
+    logout() {
+        localStorage.removeItem("dev.finances:activeUser");
+        location.reload();
+    },
+
+    showLogin() {
+        document.getElementById('login-screen').classList.remove('hidden');
+        document.getElementById('app').classList.add('hidden');
+    },
+
+    showApp() {
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+        App.init();
+    }
+}
+
+// Inicia verificando o login em vez de iniciar o App direto
+Login.init();
 
 const Modal = {
     open() {

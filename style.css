@@ -1,9 +1,9 @@
 /* 1. Cores Pastéis e Fontes */
 :root {
     --cor-fundo: #f8f8ff; /* Lavender Blush (fundo principal) */
-    --cor-primaria: #b0e0e6; /* Powder Blue (detalhes) */
+    --cor-primaria: #333d75; /* Powder Blue (detalhes) */
     --cor-secundaria: #5153a8; /* Thistle (destaques) */
-    --cor-texto: #333d75; /* Azul escuro para leitura */
+    --cor-texto: #4b65f6; /* Azul escuro para leitura */
     --fonte-elegante: 'Georgia', serif;
     --cor-verde: #49aa26;
     --cor-vermelho: #e92929;
@@ -12,11 +12,11 @@
 body {
     font-family: var(--fonte-elegante);
     background-color: var(--cor-fundo);
-    background-image: url('fundo.jpeg'); /* A imagem deve se chamar 'fundo.jpg' e estar nesta pasta */
-    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+    background-image: url('sunrise.jpg'); /* A imagem deve se chamar 'fundo.jpg' e estar nesta pasta */
+    background-size: auto; /* Ajusta a imagem para cobrir todo o fundo */
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed; /* O fundo fica fixo ao rolar a página */
-    color: var(--cor-verde);
+    color: var(--cor-fundo);
     margin: 0;
     padding: 0;
     text-align: center;
@@ -24,7 +24,8 @@ body {
 
 header {
     background-color: var(--cor-primaria);
-    padding: 40px 20px;
+    padding: 10px 20px;
+    padding-top: 20px;
     margin-bottom: 100px;
 }
 
@@ -237,4 +238,126 @@ button:hover {
 
 .button.cancel:hover {
     opacity: 1;
+}
+
+/* Classe para acessibilidade (esconde visualmente, mas mantém para leitores de tela) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* === Responsividade para Celulares === */
+@media (max-width: 800px) {
+    html {
+        font-size: 93.75%; /* 15px */
+    }
+
+    .container {
+        width: 90vw;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    header {
+        margin-bottom: 50px;
+    }
+
+    #balance {
+        grid-template-columns: 1fr;
+    }
+
+    #data-table {
+        color: var(--cor-texto);
+    }
+
+    #data-table thead {
+        display: none;
+    }
+
+    #data-table tr {
+        display: block;
+        margin-bottom: 0.8rem;
+        border-radius: 0.25rem;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    #data-table td {
+        display: block;
+        padding: 1rem 2rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: right;
+        position: relative;
+    }
+
+    #data-table td:first-child {
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    #data-table td:not(:first-child)::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 2rem;
+        color: #969cb3;
+        font-weight: normal;
+    }
+
+    .modal {
+        width: 90vw;
+        padding: 1.5rem;
+    }
+}
+
+/* === Login e Utilitários === */
+.hidden {
+    display: none !important;
+}
+
+#login-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-screen .card {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+#login-screen input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.button.logout {
+    float: right;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.button.logout:hover {
+    background: rgba(255,255,255,0.1);
 }
