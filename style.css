@@ -136,9 +136,10 @@ td img {
 
 .button.new {
     display: inline-block;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
     color: var(--cor-fundo);
     text-decoration: none;
+    font-size: 30px;
     font-weight: bold;
 }
 
